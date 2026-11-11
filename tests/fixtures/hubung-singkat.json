@@ -1,0 +1,108 @@
+{
+  "format": "sim-instalasi-listrik",
+  "version": 1,
+  "boards": {
+    "installation": {
+      "components": [
+        {
+          "id": "sumber",
+          "type": "source1ph",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "mcb",
+          "type": "mcb1p",
+          "position": {
+            "x": 10,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stopkontak",
+          "type": "socket",
+          "position": {
+            "x": 16,
+            "y": 2
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "k1",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L"
+          },
+          "to": {
+            "componentId": "mcb",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k2",
+          "from": {
+            "componentId": "mcb",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "stopkontak",
+            "terminalId": "L"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k3",
+          "from": {
+            "componentId": "stopkontak",
+            "terminalId": "N"
+          },
+          "to": {
+            "componentId": "sumber",
+            "terminalId": "N"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "k4",
+          "from": {
+            "componentId": "stopkontak",
+            "terminalId": "PE"
+          },
+          "to": {
+            "componentId": "sumber",
+            "terminalId": "PE"
+          },
+          "color": "green-yellow",
+          "bends": []
+        },
+        {
+          "id": "gangguan",
+          "from": {
+            "componentId": "stopkontak",
+            "terminalId": "L"
+          },
+          "to": {
+            "componentId": "stopkontak",
+            "terminalId": "N"
+          },
+          "color": "black",
+          "bends": []
+        }
+      ]
+    },
+    "panel": {
+      "components": [],
+      "wires": []
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "format": "sim-instalasi-listrik",
+  "version": 1,
+  "boards": {
+    "installation": {
+      "components": [
+        {
+          "id": "sumber",
+          "type": "source1ph",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "panel",
+          "type": "panel",
+          "position": {
+            "x": 10,
+            "y": 2
+          },
+          "rotation": 0,
+          "settings": {
+            "x1Labels": ["L", "L1", "", ""]
+          }
+        },
+        {
+          "id": "saklar",
+          "type": "switch1",
+          "position": {
+            "x": 20,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "lampu",
+          "type": "lamp",
+          "position": {
+            "x": 26,
+            "y": 2
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "k1",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k2",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "saklar",
+            "terminalId": "L"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k3",
+          "from": {
+            "componentId": "saklar",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "lampu",
+            "terminalId": "L"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k4",
+          "from": {
+            "componentId": "lampu",
+            "terminalId": "N"
+          },
+          "to": {
+            "componentId": "sumber",
+            "terminalId": "N"
+          },
+          "color": "blue",
+          "bends": []
+        }
+      ]
+    },
+    "panel": {
+      "components": [
+        {
+          "id": "x1",
+          "type": "terminalBlock",
+          "position": {
+            "x": 4,
+            "y": 20
+          },
+          "rotation": 0,
+          "settings": {
+            "x1Labels": ["L", "L1", "", ""]
+          }
+        },
+        {
+          "id": "mcb",
+          "type": "mcb1p",
+          "position": {
+            "x": 6,
+            "y": 8
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "p1",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "mcb",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "p2",
+          "from": {
+            "componentId": "mcb",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "2"
+          },
+          "color": "brown",
+          "bends": []
+        }
+      ]
+    }
+  }
+}

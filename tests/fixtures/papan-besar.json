@@ -1,0 +1,2270 @@
+{
+  "format": "sim-instalasi-listrik",
+  "version": 1,
+  "boards": {
+    "installation": {
+      "components": [
+        {
+          "id": "sumber",
+          "type": "source3ph",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "panel",
+          "type": "panel",
+          "position": {
+            "x": 12,
+            "y": 2
+          },
+          "rotation": 0,
+          "settings": {
+            "x1Labels": [
+              "L1",
+              "L2",
+              "L3",
+              "N",
+              "U1",
+              "V1",
+              "W1",
+              "U2",
+              "V2",
+              "W2",
+              "U3",
+              "V3",
+              "W3",
+              "U4",
+              "V4",
+              "W4",
+              "U5",
+              "V5",
+              "W5"
+            ]
+          }
+        },
+        {
+          "id": "m1",
+          "type": "motor",
+          "position": {
+            "x": 2,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "m2",
+          "type": "motor",
+          "position": {
+            "x": 12,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "m3",
+          "type": "motor",
+          "position": {
+            "x": 22,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "m4",
+          "type": "motor",
+          "position": {
+            "x": 32,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "m5",
+          "type": "motor",
+          "position": {
+            "x": 42,
+            "y": 16
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "w1",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L1"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w2",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L2"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w3",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L3"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "3"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w4",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "N"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "4"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w9",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "5"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "U1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w14",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "V1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w19",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "7"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "W1"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w20",
+          "from": {
+            "componentId": "m1",
+            "terminalId": "U1"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "W2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w21",
+          "from": {
+            "componentId": "m1",
+            "terminalId": "V1"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "U2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w22",
+          "from": {
+            "componentId": "m1",
+            "terminalId": "W1"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "V2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w36",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "8"
+          },
+          "to": {
+            "componentId": "m2",
+            "terminalId": "U1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w41",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "9"
+          },
+          "to": {
+            "componentId": "m2",
+            "terminalId": "V1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w46",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "10"
+          },
+          "to": {
+            "componentId": "m2",
+            "terminalId": "W1"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w47",
+          "from": {
+            "componentId": "m2",
+            "terminalId": "U1"
+          },
+          "to": {
+            "componentId": "m2",
+            "terminalId": "W2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w48",
+          "from": {
+            "componentId": "m2",
+            "terminalId": "V1"
+          },
+          "to": {
+            "componentId": "m2",
+            "terminalId": "U2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w49",
+          "from": {
+            "componentId": "m2",
+            "terminalId": "W1"
+          },
+          "to": {
+            "componentId": "m2",
+            "terminalId": "V2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w63",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "11"
+          },
+          "to": {
+            "componentId": "m3",
+            "terminalId": "U1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w68",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "12"
+          },
+          "to": {
+            "componentId": "m3",
+            "terminalId": "V1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w73",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "13"
+          },
+          "to": {
+            "componentId": "m3",
+            "terminalId": "W1"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w74",
+          "from": {
+            "componentId": "m3",
+            "terminalId": "U1"
+          },
+          "to": {
+            "componentId": "m3",
+            "terminalId": "W2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w75",
+          "from": {
+            "componentId": "m3",
+            "terminalId": "V1"
+          },
+          "to": {
+            "componentId": "m3",
+            "terminalId": "U2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w76",
+          "from": {
+            "componentId": "m3",
+            "terminalId": "W1"
+          },
+          "to": {
+            "componentId": "m3",
+            "terminalId": "V2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w90",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "m4",
+            "terminalId": "U1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w95",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "15"
+          },
+          "to": {
+            "componentId": "m4",
+            "terminalId": "V1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w100",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "16"
+          },
+          "to": {
+            "componentId": "m4",
+            "terminalId": "W1"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w101",
+          "from": {
+            "componentId": "m4",
+            "terminalId": "U1"
+          },
+          "to": {
+            "componentId": "m4",
+            "terminalId": "W2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w102",
+          "from": {
+            "componentId": "m4",
+            "terminalId": "V1"
+          },
+          "to": {
+            "componentId": "m4",
+            "terminalId": "U2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w103",
+          "from": {
+            "componentId": "m4",
+            "terminalId": "W1"
+          },
+          "to": {
+            "componentId": "m4",
+            "terminalId": "V2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w117",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "17"
+          },
+          "to": {
+            "componentId": "m5",
+            "terminalId": "U1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w122",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "18"
+          },
+          "to": {
+            "componentId": "m5",
+            "terminalId": "V1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w127",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "19"
+          },
+          "to": {
+            "componentId": "m5",
+            "terminalId": "W1"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w128",
+          "from": {
+            "componentId": "m5",
+            "terminalId": "U1"
+          },
+          "to": {
+            "componentId": "m5",
+            "terminalId": "W2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w129",
+          "from": {
+            "componentId": "m5",
+            "terminalId": "V1"
+          },
+          "to": {
+            "componentId": "m5",
+            "terminalId": "U2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w130",
+          "from": {
+            "componentId": "m5",
+            "terminalId": "W1"
+          },
+          "to": {
+            "componentId": "m5",
+            "terminalId": "V2"
+          },
+          "color": "black",
+          "bends": []
+        }
+      ]
+    },
+    "panel": {
+      "components": [
+        {
+          "id": "x1",
+          "type": "terminalBlock",
+          "position": {
+            "x": 4,
+            "y": 44
+          },
+          "rotation": 0,
+          "settings": {
+            "x1Labels": [
+              "L1",
+              "L2",
+              "L3",
+              "N",
+              "U1",
+              "V1",
+              "W1",
+              "U2",
+              "V2",
+              "W2",
+              "U3",
+              "V3",
+              "W3",
+              "U4",
+              "V4",
+              "W4",
+              "U5",
+              "V5",
+              "W5"
+            ]
+          }
+        },
+        {
+          "id": "f0",
+          "type": "mcb1p",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "h0",
+          "type": "pilotLamp",
+          "position": {
+            "x": 2,
+            "y": 10
+          },
+          "rotation": 0
+        },
+        {
+          "id": "q1",
+          "type": "mcb3p",
+          "position": {
+            "x": 8,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "k1",
+          "type": "contactor",
+          "position": {
+            "x": 8,
+            "y": 14
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f1",
+          "type": "overloadRelay",
+          "position": {
+            "x": 8,
+            "y": 26
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stop1",
+          "type": "pushButtonNC",
+          "position": {
+            "x": 14,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "start1",
+          "type": "pushButtonNO",
+          "position": {
+            "x": 17,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "h1",
+          "type": "pilotLamp",
+          "position": {
+            "x": 16,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "q2",
+          "type": "mcb3p",
+          "position": {
+            "x": 22,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "k2",
+          "type": "contactor",
+          "position": {
+            "x": 22,
+            "y": 14
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f2",
+          "type": "overloadRelay",
+          "position": {
+            "x": 22,
+            "y": 26
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stop2",
+          "type": "pushButtonNC",
+          "position": {
+            "x": 28,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "start2",
+          "type": "pushButtonNO",
+          "position": {
+            "x": 31,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "h2",
+          "type": "pilotLamp",
+          "position": {
+            "x": 30,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "q3",
+          "type": "mcb3p",
+          "position": {
+            "x": 36,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "k3",
+          "type": "contactor",
+          "position": {
+            "x": 36,
+            "y": 14
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f3",
+          "type": "overloadRelay",
+          "position": {
+            "x": 36,
+            "y": 26
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stop3",
+          "type": "pushButtonNC",
+          "position": {
+            "x": 42,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "start3",
+          "type": "pushButtonNO",
+          "position": {
+            "x": 45,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "h3",
+          "type": "pilotLamp",
+          "position": {
+            "x": 44,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "q4",
+          "type": "mcb3p",
+          "position": {
+            "x": 50,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "k4",
+          "type": "contactor",
+          "position": {
+            "x": 50,
+            "y": 14
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f4",
+          "type": "overloadRelay",
+          "position": {
+            "x": 50,
+            "y": 26
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stop4",
+          "type": "pushButtonNC",
+          "position": {
+            "x": 56,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "start4",
+          "type": "pushButtonNO",
+          "position": {
+            "x": 59,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "h4",
+          "type": "pilotLamp",
+          "position": {
+            "x": 58,
+            "y": 16
+          },
+          "rotation": 0
+        },
+        {
+          "id": "q5",
+          "type": "mcb3p",
+          "position": {
+            "x": 64,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "k5",
+          "type": "contactor",
+          "position": {
+            "x": 64,
+            "y": 14
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f5",
+          "type": "overloadRelay",
+          "position": {
+            "x": 64,
+            "y": 26
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stop5",
+          "type": "pushButtonNC",
+          "position": {
+            "x": 70,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "start5",
+          "type": "pushButtonNO",
+          "position": {
+            "x": 73,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "h5",
+          "type": "pilotLamp",
+          "position": {
+            "x": 72,
+            "y": 16
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "w5",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "q1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w6",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w7",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w8",
+          "from": {
+            "componentId": "f1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "5"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w10",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "q1",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w11",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w12",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "f1",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w13",
+          "from": {
+            "componentId": "f1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "6"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w15",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "q1",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w16",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w17",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "f1",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w18",
+          "from": {
+            "componentId": "f1",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "7"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w23",
+          "from": {
+            "componentId": "f0",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f1",
+            "terminalId": "95"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w24",
+          "from": {
+            "componentId": "f1",
+            "terminalId": "96"
+          },
+          "to": {
+            "componentId": "stop1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w25",
+          "from": {
+            "componentId": "stop1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "start1",
+            "terminalId": "3"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w26",
+          "from": {
+            "componentId": "start1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "A1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w27",
+          "from": {
+            "componentId": "start1",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "13"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w28",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "start1",
+            "terminalId": "4"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w29",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w30",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "A1"
+          },
+          "to": {
+            "componentId": "h1",
+            "terminalId": "X1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w31",
+          "from": {
+            "componentId": "h1",
+            "terminalId": "X2"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w32",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "q2",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w33",
+          "from": {
+            "componentId": "q2",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w34",
+          "from": {
+            "componentId": "k2",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w35",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "8"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w37",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "q2",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w38",
+          "from": {
+            "componentId": "q2",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w39",
+          "from": {
+            "componentId": "k2",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w40",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "9"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w42",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "5"
+          },
+          "to": {
+            "componentId": "q2",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w43",
+          "from": {
+            "componentId": "q2",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w44",
+          "from": {
+            "componentId": "k2",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w45",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "10"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w50",
+          "from": {
+            "componentId": "f1",
+            "terminalId": "95"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "95"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w51",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "96"
+          },
+          "to": {
+            "componentId": "stop2",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w52",
+          "from": {
+            "componentId": "stop2",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "start2",
+            "terminalId": "3"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w53",
+          "from": {
+            "componentId": "start2",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "A1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w54",
+          "from": {
+            "componentId": "start2",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "13"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w55",
+          "from": {
+            "componentId": "k2",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "start2",
+            "terminalId": "4"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w56",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "A2"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w57",
+          "from": {
+            "componentId": "k2",
+            "terminalId": "A1"
+          },
+          "to": {
+            "componentId": "h2",
+            "terminalId": "X1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w58",
+          "from": {
+            "componentId": "h2",
+            "terminalId": "X2"
+          },
+          "to": {
+            "componentId": "k2",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w59",
+          "from": {
+            "componentId": "q2",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "q3",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w60",
+          "from": {
+            "componentId": "q3",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w61",
+          "from": {
+            "componentId": "k3",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f3",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w62",
+          "from": {
+            "componentId": "f3",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "11"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w64",
+          "from": {
+            "componentId": "q2",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "q3",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w65",
+          "from": {
+            "componentId": "q3",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w66",
+          "from": {
+            "componentId": "k3",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "f3",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w67",
+          "from": {
+            "componentId": "f3",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "12"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w69",
+          "from": {
+            "componentId": "q2",
+            "terminalId": "5"
+          },
+          "to": {
+            "componentId": "q3",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w70",
+          "from": {
+            "componentId": "q3",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w71",
+          "from": {
+            "componentId": "k3",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "f3",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w72",
+          "from": {
+            "componentId": "f3",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "13"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w77",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "95"
+          },
+          "to": {
+            "componentId": "f3",
+            "terminalId": "95"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w78",
+          "from": {
+            "componentId": "f3",
+            "terminalId": "96"
+          },
+          "to": {
+            "componentId": "stop3",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w79",
+          "from": {
+            "componentId": "stop3",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "start3",
+            "terminalId": "3"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w80",
+          "from": {
+            "componentId": "start3",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "A1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w81",
+          "from": {
+            "componentId": "start3",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "13"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w82",
+          "from": {
+            "componentId": "k3",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "start3",
+            "terminalId": "4"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w83",
+          "from": {
+            "componentId": "k2",
+            "terminalId": "A2"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w84",
+          "from": {
+            "componentId": "k3",
+            "terminalId": "A1"
+          },
+          "to": {
+            "componentId": "h3",
+            "terminalId": "X1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w85",
+          "from": {
+            "componentId": "h3",
+            "terminalId": "X2"
+          },
+          "to": {
+            "componentId": "k3",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w86",
+          "from": {
+            "componentId": "q3",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "q4",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w87",
+          "from": {
+            "componentId": "q4",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w88",
+          "from": {
+            "componentId": "k4",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f4",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w89",
+          "from": {
+            "componentId": "f4",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "14"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w91",
+          "from": {
+            "componentId": "q3",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "q4",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w92",
+          "from": {
+            "componentId": "q4",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w93",
+          "from": {
+            "componentId": "k4",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "f4",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w94",
+          "from": {
+            "componentId": "f4",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "15"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w96",
+          "from": {
+            "componentId": "q3",
+            "terminalId": "5"
+          },
+          "to": {
+            "componentId": "q4",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w97",
+          "from": {
+            "componentId": "q4",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w98",
+          "from": {
+            "componentId": "k4",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "f4",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w99",
+          "from": {
+            "componentId": "f4",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "16"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w104",
+          "from": {
+            "componentId": "f3",
+            "terminalId": "95"
+          },
+          "to": {
+            "componentId": "f4",
+            "terminalId": "95"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w105",
+          "from": {
+            "componentId": "f4",
+            "terminalId": "96"
+          },
+          "to": {
+            "componentId": "stop4",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w106",
+          "from": {
+            "componentId": "stop4",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "start4",
+            "terminalId": "3"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w107",
+          "from": {
+            "componentId": "start4",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "A1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w108",
+          "from": {
+            "componentId": "start4",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "13"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w109",
+          "from": {
+            "componentId": "k4",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "start4",
+            "terminalId": "4"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w110",
+          "from": {
+            "componentId": "k3",
+            "terminalId": "A2"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w111",
+          "from": {
+            "componentId": "k4",
+            "terminalId": "A1"
+          },
+          "to": {
+            "componentId": "h4",
+            "terminalId": "X1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w112",
+          "from": {
+            "componentId": "h4",
+            "terminalId": "X2"
+          },
+          "to": {
+            "componentId": "k4",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w113",
+          "from": {
+            "componentId": "q4",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "q5",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w114",
+          "from": {
+            "componentId": "q5",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w115",
+          "from": {
+            "componentId": "k5",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f5",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w116",
+          "from": {
+            "componentId": "f5",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "17"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w118",
+          "from": {
+            "componentId": "q4",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "q5",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w119",
+          "from": {
+            "componentId": "q5",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w120",
+          "from": {
+            "componentId": "k5",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "f5",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w121",
+          "from": {
+            "componentId": "f5",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "18"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "w123",
+          "from": {
+            "componentId": "q4",
+            "terminalId": "5"
+          },
+          "to": {
+            "componentId": "q5",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w124",
+          "from": {
+            "componentId": "q5",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w125",
+          "from": {
+            "componentId": "k5",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "f5",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w126",
+          "from": {
+            "componentId": "f5",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "19"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "w131",
+          "from": {
+            "componentId": "f4",
+            "terminalId": "95"
+          },
+          "to": {
+            "componentId": "f5",
+            "terminalId": "95"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w132",
+          "from": {
+            "componentId": "f5",
+            "terminalId": "96"
+          },
+          "to": {
+            "componentId": "stop5",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w133",
+          "from": {
+            "componentId": "stop5",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "start5",
+            "terminalId": "3"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w134",
+          "from": {
+            "componentId": "start5",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "A1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w135",
+          "from": {
+            "componentId": "start5",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "13"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w136",
+          "from": {
+            "componentId": "k5",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "start5",
+            "terminalId": "4"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w137",
+          "from": {
+            "componentId": "k4",
+            "terminalId": "A2"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w138",
+          "from": {
+            "componentId": "k5",
+            "terminalId": "A1"
+          },
+          "to": {
+            "componentId": "h5",
+            "terminalId": "X1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w139",
+          "from": {
+            "componentId": "h5",
+            "terminalId": "X2"
+          },
+          "to": {
+            "componentId": "k5",
+            "terminalId": "A2"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "w140",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f0",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w141",
+          "from": {
+            "componentId": "f0",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "h0",
+            "terminalId": "X1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "w142",
+          "from": {
+            "componentId": "h0",
+            "terminalId": "X2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "4"
+          },
+          "color": "blue",
+          "bends": []
+        }
+      ]
+    }
+  }
+}

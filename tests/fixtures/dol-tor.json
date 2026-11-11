@@ -1,0 +1,504 @@
+{
+  "format": "sim-instalasi-listrik",
+  "version": 1,
+  "boards": {
+    "installation": {
+      "components": [
+        {
+          "id": "sumber",
+          "type": "source3ph",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "panel",
+          "type": "panel",
+          "position": {
+            "x": 12,
+            "y": 2
+          },
+          "rotation": 0,
+          "settings": {
+            "x1Labels": ["L1", "L2", "L3", "N", "U", "V", "W", ""]
+          }
+        },
+        {
+          "id": "m1",
+          "type": "motor",
+          "position": {
+            "x": 26,
+            "y": 12
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "i1",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L1"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "i2",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L2"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "i3",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L3"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "3"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "i4",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "N"
+          },
+          "to": {
+            "componentId": "panel",
+            "terminalId": "4"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "i5",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "5"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "U1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "i6",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "V1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "i7",
+          "from": {
+            "componentId": "panel",
+            "terminalId": "7"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "W1"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "j1",
+          "from": {
+            "componentId": "m1",
+            "terminalId": "U1"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "W2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "j2",
+          "from": {
+            "componentId": "m1",
+            "terminalId": "V1"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "U2"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "j3",
+          "from": {
+            "componentId": "m1",
+            "terminalId": "W1"
+          },
+          "to": {
+            "componentId": "m1",
+            "terminalId": "V2"
+          },
+          "color": "black",
+          "bends": []
+        }
+      ]
+    },
+    "panel": {
+      "components": [
+        {
+          "id": "x1",
+          "type": "terminalBlock",
+          "position": {
+            "x": 4,
+            "y": 30
+          },
+          "rotation": 0,
+          "settings": {
+            "x1Labels": ["L1", "L2", "L3", "N", "U", "V", "W", ""]
+          }
+        },
+        {
+          "id": "q1",
+          "type": "mcb3p",
+          "position": {
+            "x": 4,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f1",
+          "type": "mcb1p",
+          "position": {
+            "x": 12,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "stop",
+          "type": "pushButtonNC",
+          "position": {
+            "x": 18,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "start",
+          "type": "pushButtonNO",
+          "position": {
+            "x": 22,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "k1",
+          "type": "contactor",
+          "position": {
+            "x": 4,
+            "y": 12
+          },
+          "rotation": 0
+        },
+        {
+          "id": "f2",
+          "type": "overloadRelay",
+          "position": {
+            "x": 4,
+            "y": 20
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "p1",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "q1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "p2",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "q1",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "p3",
+          "from": {
+            "componentId": "x1",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "q1",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "p4",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "p5",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "p6",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "t7",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "p7",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "5"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "t8",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "3"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "p8",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "6"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "t9",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "5"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "p9",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "6"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "7"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "c1",
+          "from": {
+            "componentId": "q1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f1",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "c8",
+          "from": {
+            "componentId": "f2",
+            "terminalId": "96"
+          },
+          "to": {
+            "componentId": "stop",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "c2",
+          "from": {
+            "componentId": "f1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "f2",
+            "terminalId": "95"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "c3",
+          "from": {
+            "componentId": "stop",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "start",
+            "terminalId": "3"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "c4",
+          "from": {
+            "componentId": "start",
+            "terminalId": "4"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "A1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "c5",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "A2"
+          },
+          "to": {
+            "componentId": "x1",
+            "terminalId": "4"
+          },
+          "color": "blue",
+          "bends": []
+        },
+        {
+          "id": "c6",
+          "from": {
+            "componentId": "start",
+            "terminalId": "3"
+          },
+          "to": {
+            "componentId": "k1",
+            "terminalId": "13"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "c7",
+          "from": {
+            "componentId": "k1",
+            "terminalId": "14"
+          },
+          "to": {
+            "componentId": "start",
+            "terminalId": "4"
+          },
+          "color": "brown",
+          "bends": []
+        }
+      ]
+    }
+  }
+}

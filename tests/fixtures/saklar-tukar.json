@@ -1,0 +1,139 @@
+{
+  "format": "sim-instalasi-listrik",
+  "version": 1,
+  "boards": {
+    "installation": {
+      "components": [
+        {
+          "id": "sumber",
+          "type": "source1ph",
+          "position": {
+            "x": 2,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "mcb",
+          "type": "mcb1p",
+          "position": {
+            "x": 10,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "tukar1",
+          "type": "switch2way",
+          "position": {
+            "x": 16,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "tukar2",
+          "type": "switch2way",
+          "position": {
+            "x": 24,
+            "y": 2
+          },
+          "rotation": 0
+        },
+        {
+          "id": "lampu",
+          "type": "lamp",
+          "position": {
+            "x": 32,
+            "y": 2
+          },
+          "rotation": 0
+        }
+      ],
+      "wires": [
+        {
+          "id": "k1",
+          "from": {
+            "componentId": "sumber",
+            "terminalId": "L"
+          },
+          "to": {
+            "componentId": "mcb",
+            "terminalId": "1"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k2",
+          "from": {
+            "componentId": "mcb",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "tukar1",
+            "terminalId": "C"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k3",
+          "from": {
+            "componentId": "tukar1",
+            "terminalId": "1"
+          },
+          "to": {
+            "componentId": "tukar2",
+            "terminalId": "1"
+          },
+          "color": "black",
+          "bends": []
+        },
+        {
+          "id": "k4",
+          "from": {
+            "componentId": "tukar1",
+            "terminalId": "2"
+          },
+          "to": {
+            "componentId": "tukar2",
+            "terminalId": "2"
+          },
+          "color": "grey",
+          "bends": []
+        },
+        {
+          "id": "k5",
+          "from": {
+            "componentId": "tukar2",
+            "terminalId": "C"
+          },
+          "to": {
+            "componentId": "lampu",
+            "terminalId": "L"
+          },
+          "color": "brown",
+          "bends": []
+        },
+        {
+          "id": "k6",
+          "from": {
+            "componentId": "lampu",
+            "terminalId": "N"
+          },
+          "to": {
+            "componentId": "sumber",
+            "terminalId": "N"
+          },
+          "color": "blue",
+          "bends": []
+        }
+      ]
+    },
+    "panel": {
+      "components": [],
+      "wires": []
+    }
+  }
+}

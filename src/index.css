@@ -1,0 +1,1437 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1c2430;
+  --muted: #5b6675;
+  --border: #d5dae1;
+  --accent: #0b6bcb;
+  --accent-soft: #e3effb;
+  --board: #e9ecef;
+  --grid-dot: #b9c0ca;
+  --component: #ffffff;
+  --component-border: #3b4656;
+  --terminal: #c98a12;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.app-main {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Toolbar */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.toolbar button {
+  min-width: 32px;
+  padding: 5px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toolbar button:hover:not(:disabled) {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.toolbar button:disabled {
+  color: var(--muted);
+  opacity: 0.55;
+  cursor: default;
+}
+
+.toolbar-gap {
+  width: 6px;
+}
+
+/* Palet */
+
+.palette {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 12px;
+  overflow-y: auto;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  user-select: none;
+}
+
+.palette-hint {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.palette-group h2 {
+  margin: 12px 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.palette-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.palette-item {
+  width: 100%;
+  padding: 8px 10px;
+  text-align: left;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.palette-item:hover,
+.palette-item.dragging {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* Papan */
+
+.board {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: block;
+  background: var(--board);
+  touch-action: none;
+  user-select: none;
+}
+
+.board.placing {
+  cursor: copy;
+}
+
+.board-background {
+  cursor: grab;
+}
+
+.grid-dot {
+  fill: var(--grid-dot);
+}
+
+.component {
+  cursor: move;
+  outline: none;
+}
+
+.component-body {
+  fill: var(--component);
+  stroke: var(--component-border);
+  stroke-width: 1.5;
+}
+
+.component.selected .component-body,
+.component:focus-visible .component-body {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.component.ghost {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.component-label {
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--text);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.terminal {
+  cursor: crosshair;
+  outline: none;
+}
+
+.terminal-hit {
+  fill: transparent;
+}
+
+.terminal-dot {
+  fill: var(--terminal);
+  stroke: var(--component-border);
+  stroke-width: 1;
+}
+
+.terminal:hover .terminal-dot,
+.terminal:focus-visible .terminal-dot {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.terminal.active .terminal-dot {
+  fill: var(--accent);
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.terminal-label {
+  font-size: 8px;
+  fill: var(--muted);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+/* Kabel */
+
+.board.wiring,
+.board.wiring .board-background,
+.board.wiring .component {
+  cursor: crosshair;
+}
+
+.wire {
+  cursor: pointer;
+  outline: none;
+}
+
+.wire-line {
+  fill: none;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.wire-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 12;
+  stroke-linejoin: round;
+}
+
+.wire-halo {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 8;
+  stroke-opacity: 0.35;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.wire:focus-visible .wire-line {
+  stroke-width: 5;
+}
+
+.wire.pending {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.wire-bend {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2;
+  cursor: move;
+}
+
+.wire-midpoint {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+  cursor: copy;
+}
+
+/* Pilihan warna kabel */
+
+.wire-colors {
+  display: flex;
+  gap: 4px;
+}
+
+.toolbar .wire-color {
+  min-width: 0;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.toolbar .wire-color[aria-checked='true'] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.wire-swatch {
+  display: block;
+  width: 22px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.status-line {
+  flex: 1;
+  min-width: 0;
+  margin-left: 16px;
+  padding-bottom: 2px;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-line.warning {
+  font-weight: 600;
+  color: #9a3412;
+}
+
+/* Simulasi */
+
+.toolbar .power {
+  font-weight: 600;
+}
+
+.toolbar .power.on {
+  color: #ffffff;
+  background: #c62828;
+  border-color: #8e1c1c;
+}
+
+.toolbar .power.on:hover {
+  background: #a82020;
+  border-color: #8e1c1c;
+}
+
+.palette-item:disabled {
+  color: var(--muted);
+  opacity: 0.55;
+  cursor: default;
+}
+
+.board.energized .component,
+.board.energized .terminal,
+.board.energized .wire {
+  cursor: default;
+}
+
+.board.energized .component.operable {
+  cursor: pointer;
+}
+
+.board.energized .component.operable:hover .component-body {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.lever {
+  font-size: 9px;
+  font-weight: 700;
+  fill: var(--muted);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.lever.on {
+  fill: #1b7f3b;
+}
+
+.lever.position {
+  fill: var(--accent);
+}
+
+.lever-hit {
+  fill: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.lever-hit:hover,
+.lever-hit:focus-visible {
+  fill: var(--accent);
+  fill-opacity: 0.12;
+}
+
+.lever.trip {
+  fill: #c62828;
+}
+
+.lamp-bulb {
+  fill: #eef0f3;
+  stroke: var(--component-border);
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.lamp-glow {
+  fill: #ffd21f;
+  stroke: #e0a800;
+  stroke-width: 1;
+  filter: drop-shadow(0 0 6px #ffc400);
+  pointer-events: none;
+}
+
+.wire-live {
+  fill: none;
+  stroke: #ff8a00;
+  stroke-width: 9;
+  stroke-opacity: 0.45;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+/* Pesan gangguan */
+
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  color: #5f1010;
+  background: #fde8e8;
+  border-bottom: 1px solid #e5a3a3;
+}
+
+.notice-text {
+  flex: 1;
+  font-weight: 600;
+}
+
+.notice-close {
+  padding: 4px 12px;
+  background: var(--surface);
+  border: 1px solid #e5a3a3;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Dialog konfirmasi */
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: rgb(20 28 40 / 45%);
+}
+
+.dialog {
+  width: min(420px, calc(100vw - 32px));
+  padding: 20px;
+  background: var(--surface);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 25%);
+}
+
+.dialog h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.dialog p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.dialog-actions button {
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dialog-actions button.danger {
+  color: #ffffff;
+  background: #c62828;
+  border-color: #8e1c1c;
+}
+
+/* Tab papan */
+
+.board-bar {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.board-tabs {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.board-tab {
+  padding: 6px 16px;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+}
+
+.board-tab:hover {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.board-tab.active {
+  margin-bottom: -1px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--board);
+  border-color: var(--border);
+}
+
+.board-hint {
+  font-size: 13px;
+  fill: var(--muted);
+  pointer-events: none;
+}
+
+/* Setelan komponen */
+
+.settings {
+  width: 230px;
+  flex-shrink: 0;
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+}
+
+.settings h2 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.settings-hint {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.settings-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.settings-count span {
+  flex: 1;
+}
+
+.settings-count button {
+  width: 28px;
+  height: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.settings-count button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.settings-count output {
+  min-width: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.settings-labels {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.settings-labels label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-labels span {
+  width: 44px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.settings-labels input {
+  flex: 1;
+  min-width: 0;
+  width: 0;
+  padding: 4px 6px;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Kontaktor terbakar dan pilihan setelan */
+
+.component.burnt .component-body {
+  fill: #f3d9d2;
+  stroke: #8e1c1c;
+}
+
+.settings-choice {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: grid;
+  gap: 6px;
+}
+
+.settings-choice legend {
+  padding: 0 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.settings-choice label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-burnt {
+  padding: 10px;
+  color: #5f1010;
+  background: #fde8e8;
+  border: 1px solid #e5a3a3;
+  border-radius: 6px;
+}
+
+.settings-burnt p {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.settings-burnt button {
+  padding: 5px 12px;
+  background: var(--surface);
+  border: 1px solid #e5a3a3;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Motor */
+
+.motor {
+  pointer-events: none;
+}
+
+.motor-stator {
+  fill: #dfe3e8;
+  stroke: var(--component-border);
+  stroke-width: 1.5;
+}
+
+.motor-rotor {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.motor-hub {
+  fill: #f7f8fa;
+  stroke: var(--component-border);
+  stroke-width: 1;
+}
+
+.motor-rotor line {
+  stroke: var(--component-border);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.motor-mark {
+  fill: var(--accent);
+}
+
+.motor-rotor.spin-cw {
+  animation: motor-spin 0.6s linear infinite;
+}
+
+.motor-rotor.spin-ccw {
+  animation: motor-spin 0.6s linear infinite reverse;
+}
+
+.motor-rotor.hum {
+  animation: motor-hum 0.08s linear infinite alternate;
+}
+
+@keyframes motor-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes motor-hum {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motor-rotor {
+    animation: none !important;
+  }
+}
+
+.settings-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.settings-field span {
+  flex: 1;
+}
+
+.settings-field select,
+.settings-field input {
+  width: 84px;
+  padding: 4px 6px;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Alat ukur */
+
+.palette-item.instrument {
+  cursor: pointer;
+}
+
+.palette-item.instrument.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* Alat ukur berjajar di tepi bawah papan; bila tidak muat, baris berikutnya naik ke atas. */
+.instruments {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.meter {
+  pointer-events: auto;
+  width: 236px;
+  padding: 8px 10px 10px;
+  background: #f2c230;
+  border: 2px solid #3b4656;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 25%);
+  user-select: none;
+}
+
+.meter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.meter-header h2 {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.meter-close,
+.meter-detach {
+  padding: 2px 8px;
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--component-border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.meter-display {
+  display: block;
+  padding: 3px 10px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: right;
+  color: #1c2430;
+  background: #c9d6c1;
+  border: 2px solid #3b4656;
+  border-radius: 6px;
+}
+
+.meter-display.warning {
+  color: #ffffff;
+  background: #c62828;
+}
+
+.meter-note {
+  min-height: 32px;
+  margin: 4px 0 6px;
+  font-size: 12px;
+  color: #1c2430;
+}
+
+.meter-modes {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 8px;
+  padding: 0;
+  border: none;
+}
+
+.meter-modes legend {
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meter-modes label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.meter-probes {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.meter-probes li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 6px;
+}
+
+.meter-probe {
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.meter-probe.red {
+  background: #c62828;
+}
+
+.meter-probe.black {
+  background: #1c1c1c;
+}
+
+.meter-probe.picking {
+  border-color: #ffffff;
+  outline: 2px solid var(--accent);
+}
+
+.meter-place {
+  font-size: 11px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+/* Selama probe dibawa, terminal ditonjolkan sebagai sasaran. */
+body.probing .board,
+body.probing .board .terminal,
+body.probing .board .component,
+body.probing .board-background {
+  cursor: crosshair;
+}
+
+body.probing .terminal-dot {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.probe-ring {
+  fill: none;
+  stroke-width: 3;
+  pointer-events: none;
+}
+
+.probe-needle {
+  stroke-width: 4;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.probe-grip {
+  stroke: #ffffff;
+  stroke-width: 2;
+  cursor: grab;
+}
+
+.probe.red .probe-ring,
+.probe.red .probe-needle {
+  stroke: #c62828;
+}
+
+.probe.red .probe-grip {
+  fill: #c62828;
+}
+
+.probe.black .probe-ring,
+.probe.black .probe-needle {
+  stroke: #1c1c1c;
+}
+
+.probe.black .probe-grip {
+  fill: #1c1c1c;
+}
+
+.probe.picking {
+  opacity: 0.45;
+}
+
+/* Tang ampere */
+
+.meter.clamp {
+  background: #e8793a;
+}
+
+.meter-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meter-probe.clamp {
+  background: #3b4656;
+}
+
+body.clamping .board,
+body.clamping .board .wire,
+body.clamping .board .component,
+body.clamping .board-background {
+  cursor: crosshair;
+}
+
+body.clamping .wire:hover .wire-line {
+  stroke-width: 5;
+}
+
+.clamp-jaw {
+  pointer-events: none;
+}
+
+.clamp-ring {
+  fill: none;
+  stroke: #e8793a;
+  stroke-width: 5;
+}
+
+.clamp-core {
+  fill: #3b4656;
+}
+
+/* Tespen */
+
+.meter.tester {
+  background: #dfe6ee;
+}
+
+.meter-display.tester-lit {
+  color: #7a2e00;
+  background: #ffb347;
+  box-shadow: 0 0 12px #ff8c1a;
+}
+
+.meter-probe.tester {
+  background: #0b6bcb;
+}
+
+.tester-mark {
+  pointer-events: none;
+}
+
+.tester-shaft {
+  stroke: #8a8f96;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.tester-handle {
+  fill: #dfe6ee;
+  fill-opacity: 0.9;
+  stroke: #3b4656;
+  stroke-width: 1.5;
+}
+
+.tester-lamp {
+  fill: #9aa3ad;
+}
+
+.tester-mark.lit .tester-lamp {
+  fill: #ff8c1a;
+  stroke: #ffd08a;
+  stroke-width: 4;
+  stroke-opacity: 0.7;
+}
+
+/* Gambar piktorial */
+
+.component-body.frame {
+  fill: transparent;
+  stroke: none;
+}
+
+.component.selected .component-body.frame,
+.component:focus-visible .component-body.frame {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+
+.board.energized .component.operable:hover .component-body.frame {
+  fill: var(--accent-soft);
+  fill-opacity: 0.6;
+}
+
+.art {
+  pointer-events: none;
+}
+
+/* Nama terminal tetap terbaca di atas gambar. */
+.terminal-label.on-art {
+  fill: #1c2430;
+  font-weight: 600;
+  stroke: #ffffff;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.art-case {
+  fill: #f3f4f6;
+  stroke: #3b4656;
+  stroke-width: 1.5;
+}
+
+.art-clamp {
+  fill: #c3c9d1;
+  stroke: #7b8594;
+  stroke-width: 0.75;
+}
+
+.art-recess {
+  fill: #d5dae1;
+  stroke: #7b8594;
+  stroke-width: 0.75;
+}
+
+.art-lever {
+  fill: #1f2937;
+}
+
+.art-text {
+  font-weight: 700;
+  fill: #1c2430;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.art-text.light {
+  fill: #ffffff;
+}
+
+.art-face {
+  fill: #374151;
+}
+
+.art-dial {
+  fill: #e5e7eb;
+  stroke: #111827;
+  stroke-width: 1.5;
+}
+
+.art-dial-pointer {
+  stroke: #c62828;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.art-reset {
+  fill: #1f6fd1;
+  stroke: #0f3f7a;
+  stroke-width: 1;
+}
+
+.art-reset.armed {
+  stroke: #ffd43b;
+  stroke-width: 2.5;
+}
+
+.art-stop {
+  fill: #c62828;
+  stroke: #7a1414;
+  stroke-width: 1;
+}
+
+.art-window {
+  fill: #2e9b46;
+}
+
+.art-tor[data-status='hot'] .art-window {
+  fill: #111827;
+}
+
+.art-tor[data-status='trip'] .art-window {
+  fill: #c62828;
+}
+
+.art-heat {
+  fill: #f08c00;
+}
+
+/* Gambar piktorial: penerangan */
+
+.art-plate {
+  fill: #fbfbfc;
+  stroke: #3b4656;
+  stroke-width: 1.5;
+}
+
+.art-rocker-frame {
+  fill: #eef0f3;
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+.art-rocker-pressed {
+  fill: #c3c9d1;
+}
+
+.art-rocker.on .art-rocker-pressed {
+  fill: #2e9b46;
+}
+
+.art-rocker-pressed.way {
+  fill: #0b6bcb;
+}
+
+.art-rocker-hinge {
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+.art-rocker-text {
+  fill: #5b6675;
+}
+
+.art-rocker.on .art-rocker-text {
+  fill: #ffffff;
+}
+
+.art-contact-arm {
+  stroke: #c98a12;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 3 3;
+}
+
+.art-socket-well {
+  fill: #e5e7eb;
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+.art-socket-hole {
+  fill: #1f2937;
+}
+
+.art-socket-earth {
+  fill: #c98a12;
+}
+
+.art-lamp-base {
+  fill: #c3c9d1;
+  stroke: #3b4656;
+  stroke-width: 1;
+}
+
+.art-lamp-holder {
+  fill: #4b5563;
+}
+
+.art-lamp-filament {
+  fill: none;
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+/* Gambar piktorial: kontrol */
+
+.art-clamp.active {
+  fill: #f2c230;
+  stroke: #a17a00;
+}
+
+.art-contact {
+  stroke: #8a8f96;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.art-contact.closed {
+  stroke: #d97706;
+}
+
+.art-coil {
+  fill: #b45309;
+  stroke: #6b3105;
+  stroke-width: 1;
+}
+
+.art-contactor[data-status='off'] .art-window,
+.art-timer[data-status='idle'] .art-window {
+  fill: #6b7280;
+}
+
+.art-timer[data-status='counting'] .art-window {
+  fill: #b45309;
+}
+
+.art-contactor[data-status='burnt'] .art-window {
+  fill: #c62828;
+}
+
+.art-contactor[data-status='burnt'] .art-face {
+  fill: #3b1d1d;
+}
+
+.art-contactor[data-status='burnt'] .art-coil {
+  fill: #111111;
+  stroke: #c62828;
+  stroke-width: 2;
+}
+
+.art-contactor[data-status='burnt'] .art-case {
+  fill: #f3d9d2;
+  stroke: #8e1c1c;
+}
+
+.art-button-collar {
+  fill: #c3c9d1;
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+.art-button.no .art-button-cap {
+  fill: #2e9b46;
+  stroke: #1c6b2e;
+}
+
+.art-button.nc .art-button-cap {
+  fill: #c62828;
+  stroke: #7a1414;
+}
+
+.art-button.pressed .art-button-cap {
+  stroke: #ffd43b;
+  stroke-width: 2.5;
+}
+
+.art-pilot-lens {
+  fill: #eef0f3;
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+/* Gambar piktorial: sumber, motor, panel */
+
+.art-source-front {
+  fill: #1f3a5f;
+}
+
+.art-source-symbol {
+  fill: #ffffff;
+  stroke: #0f2038;
+  stroke-width: 1;
+}
+
+.art-source-sine {
+  fill: none;
+  stroke: #c62828;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.art-motor-box {
+  fill: #6b7280;
+  stroke: #3b4656;
+  stroke-width: 1;
+}
+
+.art-motor-body {
+  fill: #dfe4ea;
+  stroke: #3b4656;
+  stroke-width: 1.5;
+}
+
+.art-motor-fin {
+  stroke: #9aa3ad;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.art-panel-cabinet {
+  fill: #cfd5dc;
+  stroke: #3b4656;
+  stroke-width: 1.5;
+}
+
+.art-panel-door {
+  fill: #e9edf1;
+  stroke: #7b8594;
+  stroke-width: 1;
+}
+
+.art-panel-handle {
+  fill: #3b4656;
+}
+
+.art-panel-warning {
+  fill: #ffd43b;
+  stroke: #1c2430;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+
+.art-panel-bolt {
+  fill: #1c2430;
+}
+
+.art-panel-hint {
+  font-weight: 400;
+  fill: #5b6675;
+}
+
+.art-rail {
+  fill: #b9c0ca;
+  stroke: #7b8594;
+  stroke-width: 0.75;
+}
+
+.art-rail-stop {
+  fill: #6b7280;
+}
+
+.art-block {
+  fill: #ece1c6;
+  stroke: #8a7a55;
+  stroke-width: 1;
+}
+
+.art-block-screw {
+  fill: #c3c9d1;
+  stroke: #7b8594;
+  stroke-width: 0.75;
+}
+
+.art-block-slot {
+  stroke: #5b6675;
+  stroke-width: 1.5;
+}
