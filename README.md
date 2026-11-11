@@ -11,6 +11,8 @@ yang bertemu di terminal blok X1.
 > Simulator ini alat bantu belajar. Ia tidak menggantikan prosedur K3, alat pelindung diri, atau
 > pengukuran dan pengujian pada instalasi sungguhan. Nilai komponennya tipikal, bukan data pabrikan.
 
+**Buka aplikasinya:** https://mabdulaziz07.github.io/SimInstalasiListrik/
+
 ## Menjalankan
 
 Butuh Node.js 22 atau lebih baru.
@@ -49,4 +51,4 @@ Contoh rangkaian ada di `tests/fixtures/` dan bisa dibuka lewat tombol Impor, an
 ## Pemasangan
 
 `.github/workflows/deploy.yml` membangun aplikasi dan memasangnya ke GitHub Pages setiap ada push
-ke `main`. Agar berjalan, sumber Pages pada repositori perlu disetel ke "GitHub Actions".
+ke `main`. Sumber Pages pada repositori disetel ke "GitHub Actions".

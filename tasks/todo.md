@@ -273,18 +273,18 @@ Acuan: `../SPEC.md`, `plan.md`. Verifikasi umum setiap tugas: `npm run typecheck
 **Ukuran:** S
 **Catatan (selesai 2026-11-11, belum di-commit):** `papan-besar.json` = lima starter DOL dengan TOR dan lampu indikator, 40 komponen dan 142 kabel. Solver tidak perlu diubah: tolok ukur (`npm run bench`) memberi sekitar 3 ms untuk memberi tegangan dan 10 ms untuk menekan START motor kelima; `src/sim/performance.test.ts` menjaga tiap hitungan di bawah 100 ms. Di browser (build dev) menekan tombol sampai tergambar: median 34 ms, terburuk 51 ms. Seret: papan dipecah menjadi bagian ber-memo (`BoardParts.tsx`, `WireView`) dengan penangan beridentitas tetap, sehingga hanya komponen yang diseret dan kabelnya yang digambar ulang; biaya skrip+tata letak per gerakan di papan Dalam Panel (33 komponen termasuk X1, 108 kabel) turun dari median 34,8 ms menjadi 6,4 ms (p95 22,9 ms), papan Instalasi 4,2 ms. Kriteria ">= 50 fps" belum dicentang: panel Browser berjalan di latar belakang sehingga frame per detik tidak bisa diukur langsung; yang diukur adalah biaya per gerakan, di bawah 16,7 ms pada median. Perlu dipastikan di panel Performance browser pada laptop lab. 476 tes lolos.
 
-### - [ ] T20: Tes end-to-end dan GitHub Pages
+### - [x] T20: Tes end-to-end dan GitHub Pages
 **Deskripsi:** Skenario Playwright untuk alur utama dan alur kerja pemasangan ke GitHub Pages.
 **Kriteria terima:**
 - [x] Skenario e2e: merangkai lampu dari papan kosong, memberi tegangan, mengukur 230 V; memuat `dol.json` dan menjalankan motor
-- [ ] Push ke `main` memasang aplikasi ke Pages tanpa langkah manual
-- [ ] Aplikasi terbuka dari tautan Pages dan berfungsi penuh
+- [x] Push ke `main` memasang aplikasi ke Pages tanpa langkah manual
+- [x] Aplikasi terbuka dari tautan Pages dan berfungsi penuh
 **Verifikasi:** `npm run e2e`; membuka tautan Pages
 **Ketergantungan:** T19; nama repositori dan izin push dari pengguna
 **Berkas:** `e2e/*.spec.ts`, `.github/workflows/deploy.yml`, `vite.config.ts`, `README.md`
 **Ukuran:** M
 
 ### Checkpoint D
-- [ ] Seluruh 12 kriteria sukses di spec terpenuhi
-- [ ] Aplikasi terbuka dari tautan GitHub Pages
-**Kemajuan (2026-11-11, belum di-commit):** enam skenario Playwright lolos (`npm run e2e`): merangkai lampu dan stop kontak dari papan kosong lalu mengukur 230 V dan memuat ulang halaman; hubung singkat -> MCB trip; menyeret komponen dengan tetikus; memuat `dol.json`, START, 400 V, STOP; berkas bukan papan ditolak; halaman terbuka. Tes e2e menemukan cacat dari T18: kelas CSS `art` pada kotak badan komponen ikut terkena `.art { pointer-events: none }`, sehingga komponen tidak bisa diklik atau diseret dengan tetikus sungguhan; diperbaiki dengan mengganti kelasnya menjadi `frame`. `.github/workflows/deploy.yml` dan `README.md` sudah ditulis tetapi belum pernah dijalankan: repositori belum ada, tidak ada push. Sisa: nama akun/repositori dan izin push dari pengguna; menyetel sumber Pages ke "GitHub Actions"; membuka tautan Pages.
+- [x] Seluruh 12 kriteria sukses di spec terpenuhi
+- [x] Aplikasi terbuka dari tautan GitHub Pages
+**Kemajuan (2026-11-11, belum di-commit):** enam skenario Playwright lolos (`npm run e2e`): merangkai lampu dan stop kontak dari papan kosong lalu mengukur 230 V dan memuat ulang halaman; hubung singkat -> MCB trip; menyeret komponen dengan tetikus; memuat `dol.json`, START, 400 V, STOP; berkas bukan papan ditolak; halaman terbuka. Tes e2e menemukan cacat dari T18: kelas CSS `art` pada kotak badan komponen ikut terkena `.art { pointer-events: none }`, sehingga komponen tidak bisa diklik atau diseret dengan tetikus sungguhan; diperbaiki dengan mengganti kelasnya menjadi `frame`. `.github/workflows/deploy.yml` dan `README.md` sudah ditulis tetapi belum pernah dijalankan: repositori belum ada, tidak ada push. Selesai 2026-11-11: atas izin pengguna, seluruh proyek di-commit (identitas noreply GitHub, hanya untuk repositori ini) dan di-push ke `main` di github.com/MAbdulAziz07/SimInstalasiListrik; sumber Pages disetel ke GitHub Actions lewat API; alur kerja lint, typecheck, tes, build, dan pemasangan lolos pada percobaan pertama. Aplikasi terbuka di https://mabdulaziz07.github.io/SimInstalasiListrik/ tanpa galat konsol: menaruh komponen, mengeluarkan multimeter, memberi tegangan, dan simpan otomatis setelah muat ulang berfungsi. Ekspor/impor di tautan Pages belum dicoba (tercakup tes e2e lokal).

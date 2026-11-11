@@ -80,7 +80,7 @@ T3–T4 (simulasi) dan T5–T6 (editor) saling bebas dan bisa dikerjakan paralel
 ### Fase 7 — Perampungan
 - [x] T18: Gambar piktorial
 - [x] T19: Kinerja
-- [ ] T20: Tes end-to-end dan GitHub Pages
+- [x] T20: Tes end-to-end dan GitHub Pages
 
 ### Checkpoint D
 - [ ] Seluruh 12 kriteria sukses terpenuhi; aplikasi terbuka dari tautan Pages
